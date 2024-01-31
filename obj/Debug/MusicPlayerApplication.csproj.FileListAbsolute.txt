@@ -1,0 +1,17 @@
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\bin\Debug\MusicPlayerApplication.exe.config
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\bin\Debug\MusicPlayerApplication.exe
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\bin\Debug\MusicPlayerApplication.pdb
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\bin\Debug\Siticone.Desktop.UI.dll
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\bin\Debug\Interop.WMPLib.dll
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.csproj.AssemblyReference.cache
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\Interop.WMPLib.dll
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.csproj.ResolveComReference.cache
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.Form1.resources
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.Properties.Resources.resources
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.csproj.GenerateResource.cache
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.csproj.CoreCompileInputs.cache
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.csproj.CopyComplete
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.exe
+C:\Users\Dell Inspiron\Desktop\ProjetosC#\MusicPlayerApplication\obj\Debug\MusicPlayerApplication.pdb
