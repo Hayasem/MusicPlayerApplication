@@ -55,6 +55,7 @@
             this.MusicPlayer.Size = new System.Drawing.Size(798, 46);
             this.MusicPlayer.TabIndex = 0;
             this.MusicPlayer.Visible = false;
+            this.MusicPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.MusicPlayer_PlayStateChange);
             // 
             // panel1
             // 

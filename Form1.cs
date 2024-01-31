@@ -114,5 +114,28 @@ namespace MusicPlayerApplication
             TimeSpan time = TimeSpan.FromSeconds(seconds);
             return time.ToString(@"mm\:ss");
         }
+
+
+        //Prosseguir para a póxima música no momento em que ela termina:
+        private void MusicPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (e.newState == 8)
+            {
+                int nextIndex = listBox1.SelectedIndex += 1;
+                if(nextIndex < musicFiles.Count)
+                {
+                    listBox1.SelectedIndex = nextIndex;
+                    currentSong = musicFiles[nextIndex];
+                    MusicPlayer.URL = currentSong;
+                    MusicPlayer.Ctlcontrols.play();
+                    isPaused = true;
+                }
+                else
+                {
+                    MusicPlayer.Ctlcontrols.stop();
+                    isPaused=false;
+                }
+            }
+        }
     }
 }
