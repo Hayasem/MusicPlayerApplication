@@ -101,6 +101,7 @@
             this.VolumeBar.Size = new System.Drawing.Size(329, 23);
             this.VolumeBar.TabIndex = 2;
             this.VolumeBar.ThumbColor = System.Drawing.Color.RoyalBlue;
+            this.VolumeBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.VolumeBar_Scroll);
             // 
             // btnPause
             // 
@@ -180,6 +181,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 54);
             this.listBox1.Name = "listBox1";

@@ -137,5 +137,10 @@ namespace MusicPlayerApplication
                 }
             }
         }
+
+        private void VolumeBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            MusicPlayer.settings.volume = VolumeBar.Value;
+        }
     }
 }
