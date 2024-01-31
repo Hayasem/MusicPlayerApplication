@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.MusicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCounter = new System.Windows.Forms.Label();
+            this.txtVolume = new System.Windows.Forms.Label();
+            this.VolumeBar = new Siticone.Desktop.UI.WinForms.SiticoneTrackBar();
             this.btnPause = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
-            this.btnLoad = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.btnStop = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.btnStart = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
-            this.VolumeBar = new Siticone.Desktop.UI.WinForms.SiticoneTrackBar();
-            this.txtVolume = new System.Windows.Forms.Label();
-            this.txtCounter = new System.Windows.Forms.Label();
+            this.btnLoad = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.txtimported = new System.Windows.Forms.Label();
+            this.TimerPlayback = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MusicPlayer)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +71,36 @@
             this.panel1.Size = new System.Drawing.Size(798, 69);
             this.panel1.TabIndex = 1;
             // 
+            // txtCounter
+            // 
+            this.txtCounter.AutoSize = true;
+            this.txtCounter.Font = new System.Drawing.Font("Tw Cen MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCounter.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCounter.Location = new System.Drawing.Point(683, 13);
+            this.txtCounter.Name = "txtCounter";
+            this.txtCounter.Size = new System.Drawing.Size(91, 14);
+            this.txtCounter.TabIndex = 6;
+            this.txtCounter.Text = "Lenght: 0:00/0:00";
+            // 
+            // txtVolume
+            // 
+            this.txtVolume.AutoSize = true;
+            this.txtVolume.Font = new System.Drawing.Font("Tw Cen MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVolume.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtVolume.Location = new System.Drawing.Point(442, 13);
+            this.txtVolume.Name = "txtVolume";
+            this.txtVolume.Size = new System.Drawing.Size(44, 14);
+            this.txtVolume.TabIndex = 2;
+            this.txtVolume.Text = "Volume";
+            // 
+            // VolumeBar
+            // 
+            this.VolumeBar.Location = new System.Drawing.Point(445, 26);
+            this.VolumeBar.Name = "VolumeBar";
+            this.VolumeBar.Size = new System.Drawing.Size(329, 23);
+            this.VolumeBar.TabIndex = 2;
+            this.VolumeBar.ThumbColor = System.Drawing.Color.RoyalBlue;
+            // 
             // btnPause
             // 
             this.btnPause.BorderRadius = 25;
@@ -86,24 +118,7 @@
             this.btnPause.Size = new System.Drawing.Size(98, 41);
             this.btnPause.TabIndex = 2;
             this.btnPause.Text = "Pause";
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.BorderRadius = 25;
-            this.btnLoad.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLoad.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLoad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLoad.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLoad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLoad.FillColor = System.Drawing.Color.Aqua;
-            this.btnLoad.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnLoad.Font = new System.Drawing.Font("Forte", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoad.ForeColor = System.Drawing.Color.Indigo;
-            this.btnLoad.Location = new System.Drawing.Point(3, 13);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(101, 41);
-            this.btnLoad.TabIndex = 3;
-            this.btnLoad.Text = "Load";
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // btnStop
             // 
@@ -122,6 +137,7 @@
             this.btnStop.Size = new System.Drawing.Size(97, 41);
             this.btnStop.TabIndex = 4;
             this.btnStop.Text = "Stop";
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnStart
             // 
@@ -140,36 +156,26 @@
             this.btnStart.Size = new System.Drawing.Size(101, 41);
             this.btnStart.TabIndex = 5;
             this.btnStart.Text = "Start";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // VolumeBar
+            // btnLoad
             // 
-            this.VolumeBar.Location = new System.Drawing.Point(445, 26);
-            this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(329, 23);
-            this.VolumeBar.TabIndex = 2;
-            this.VolumeBar.ThumbColor = System.Drawing.Color.RoyalBlue;
-            // 
-            // txtVolume
-            // 
-            this.txtVolume.AutoSize = true;
-            this.txtVolume.Font = new System.Drawing.Font("Tw Cen MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVolume.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtVolume.Location = new System.Drawing.Point(442, 13);
-            this.txtVolume.Name = "txtVolume";
-            this.txtVolume.Size = new System.Drawing.Size(44, 14);
-            this.txtVolume.TabIndex = 2;
-            this.txtVolume.Text = "Volume";
-            // 
-            // txtCounter
-            // 
-            this.txtCounter.AutoSize = true;
-            this.txtCounter.Font = new System.Drawing.Font("Tw Cen MT", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCounter.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCounter.Location = new System.Drawing.Point(683, 13);
-            this.txtCounter.Name = "txtCounter";
-            this.txtCounter.Size = new System.Drawing.Size(91, 14);
-            this.txtCounter.TabIndex = 6;
-            this.txtCounter.Text = "Lenght: 0:00/0:00";
+            this.btnLoad.BorderRadius = 25;
+            this.btnLoad.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLoad.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLoad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLoad.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLoad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLoad.FillColor = System.Drawing.Color.Aqua;
+            this.btnLoad.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnLoad.Font = new System.Drawing.Font("Forte", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoad.ForeColor = System.Drawing.Color.Indigo;
+            this.btnLoad.Location = new System.Drawing.Point(3, 13);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(101, 41);
+            this.btnLoad.TabIndex = 3;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // listBox1
             // 
@@ -190,6 +196,11 @@
             this.txtimported.TabIndex = 3;
             this.txtimported.Text = "Imported Songs:";
             // 
+            // TimerPlayback
+            // 
+            this.TimerPlayback.Interval = 850;
+            this.TimerPlayback.Tick += new System.EventHandler(this.TimerPlayback_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +213,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Haya Music Player";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MusicPlayer)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -223,6 +235,7 @@
         private System.Windows.Forms.Label txtCounter;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label txtimported;
+        private System.Windows.Forms.Timer TimerPlayback;
     }
 }
 
