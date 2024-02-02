@@ -1,4 +1,4 @@
-﻿namespace MusicPlayerApplication
+﻿	namespace MusicPlayerApplication
 {
     partial class Form1
     {
@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPrevious = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.btnSkip = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.txtCounter = new System.Windows.Forms.Label();
@@ -45,7 +46,7 @@
             this.TimerPlayback = new System.Windows.Forms.Timer(this.components);
             this.MusicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.siticonePictureBox1 = new Siticone.Desktop.UI.WinForms.SiticonePictureBox();
-            this.btnPrevious = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
+            this.lbl_volume = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MusicPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).BeginInit();
@@ -54,6 +55,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.lbl_volume);
             this.panel1.Controls.Add(this.btnPrevious);
             this.panel1.Controls.Add(this.btnSkip);
             this.panel1.Controls.Add(this.progressBar1);
@@ -68,6 +70,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(798, 131);
             this.panel1.TabIndex = 1;
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.BorderRadius = 25;
+            this.btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrevious.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnPrevious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnPrevious.FillColor = System.Drawing.Color.Aqua;
+            this.btnPrevious.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnPrevious.Font = new System.Drawing.Font("Forte", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnPrevious.ForeColor = System.Drawing.Color.Indigo;
+            this.btnPrevious.Location = new System.Drawing.Point(219, 63);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(84, 50);
+            this.btnPrevious.TabIndex = 9;
+            this.btnPrevious.Text = "Prev.";
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnSkip
             // 
@@ -243,7 +264,7 @@
             this.siticonePictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.siticonePictureBox1.Image = global::MusicPlayerApplication.Properties.Resources.gabiru_removebg_preview;
             this.siticonePictureBox1.ImageRotate = 0F;
-            this.siticonePictureBox1.Location = new System.Drawing.Point(536, 57);
+            this.siticonePictureBox1.Location = new System.Drawing.Point(536, 47);
             this.siticonePictureBox1.Name = "siticonePictureBox1";
             this.siticonePictureBox1.Size = new System.Drawing.Size(250, 250);
             this.siticonePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -251,24 +272,15 @@
             this.siticonePictureBox1.TabStop = false;
             this.siticonePictureBox1.UseTransparentBackground = true;
             // 
-            // btnPrevious
+            // lbl_volume
             // 
-            this.btnPrevious.BorderRadius = 25;
-            this.btnPrevious.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevious.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrevious.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrevious.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrevious.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrevious.FillColor = System.Drawing.Color.Aqua;
-            this.btnPrevious.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnPrevious.Font = new System.Drawing.Font("Forte", 15.75F, System.Drawing.FontStyle.Bold);
-            this.btnPrevious.ForeColor = System.Drawing.Color.Indigo;
-            this.btnPrevious.Location = new System.Drawing.Point(219, 63);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(84, 50);
-            this.btnPrevious.TabIndex = 9;
-            this.btnPrevious.Text = "Prev.";
-            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            this.lbl_volume.AutoSize = true;
+            this.lbl_volume.Font = new System.Drawing.Font("Tw Cen MT Condensed", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_volume.Location = new System.Drawing.Point(750, 63);
+            this.lbl_volume.Name = "lbl_volume";
+            this.lbl_volume.Size = new System.Drawing.Size(28, 15);
+            this.lbl_volume.TabIndex = 10;
+            this.lbl_volume.Text = "50%";
             // 
             // Form1
             // 
@@ -310,6 +322,7 @@
         private Siticone.Desktop.UI.WinForms.SiticonePictureBox siticonePictureBox1;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnSkip;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnPrevious;
+        private System.Windows.Forms.Label lbl_volume;
     }
 }
 

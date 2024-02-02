@@ -16,8 +16,8 @@ namespace MusicPlayerApplication
     public partial class Form1 : Form
     {
         private Timer animationTimer;
-        private int direction = 1;
-        private int moveDistance = 1;
+        private int direction = 2;
+        private int moveDistance = 3;
         private List<string> musicFiles;
         private string currentSong;
         private bool isPaused;
@@ -31,6 +31,7 @@ namespace MusicPlayerApplication
             InitializeAnimation();
         }
       
+        //BOTÕES DE AÇÃO:
         private void btnLoad_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -59,7 +60,7 @@ namespace MusicPlayerApplication
                 if (isPaused)
                 {
                     MusicPlayer.Ctlcontrols.play();
-                    isPaused = false;                   
+                    isPaused = false;                 
                 }
                 else
                 {
@@ -78,6 +79,7 @@ namespace MusicPlayerApplication
             MusicPlayer.Ctlcontrols.stop();
             isPaused = false;
             TimerPlayback.Enabled = false;
+            animationTimer.Stop();
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -87,11 +89,14 @@ namespace MusicPlayerApplication
             {
                 MusicPlayer.Ctlcontrols.pause();
                 isPaused = true;
+                animationTimer.Stop();
+
             }
             else
             {
                 MusicPlayer.Ctlcontrols.play();
                 isPaused = false;
+                animationTimer.Start();
             }
 
         }
@@ -128,25 +133,31 @@ namespace MusicPlayerApplication
             MusicPlayer.Ctlcontrols.play();
             isPaused = false;
         }
+
+        //MOSTRAR A DURAÇÃO TOTAL DA MÚSICA, E A POSIÇÃO ATUAL DE
         private void TimerPlayback_Tick(object sender, EventArgs e)
         {
             if (!isChangingPosition)
             {
-                 txtCounter.Text = "Length: " + FormatTime(MusicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(MusicPlayer.currentMedia.duration);
+                 txtCounter.Text = "Length: " + FormatTime(MusicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(MusicPlayer.Ctlcontrols.currentItem.duration);
                 progressBar1.Maximum = (int)MusicPlayer.Ctlcontrols.currentItem.duration;
                 progressBar1.Value = (int)MusicPlayer.Ctlcontrols.currentPosition;
                     
             }
         }
-        
+       
         private string FormatTime(double seconds)
         {
-            TimeSpan time = TimeSpan.FromSeconds(seconds);
-            return time.ToString(@"mm\:ss");
+            TimeSpan time = TimeSpan.FromSeconds(seconds);           
+            int minutes = (int)time.TotalMinutes;
+            int segundos = (int)time.TotalSeconds;
+            segundos %= 100;
+
+            return $"{minutes:D2}:{segundos:D2}";
         }
 
 
-        //Prosseguir para a póxima música no momento em que ela termina:
+        //PROSSEGUIR PARA A PRÓXIMA MÚSICA QUANDO UMA TERMINA:
         private void MusicPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
             if (e.newState == 8)
@@ -165,23 +176,34 @@ namespace MusicPlayerApplication
                 MusicPlayer.Ctlcontrols.play();
                 isPaused = false;
             }
+            else if(e.newState == 2)
+            {
+                animationTimer.Stop();
+            }
+            else if(e.newState == 3)
+            {
+                animationTimer.Start();
+            }
         }
 
+        //BARRA DE VOLUME INTERAJÍVEL QUE DE FATO, AUMENTA OU DIMINUI O VOLUME DA MÚSICA:
         private void VolumeBar_Scroll(object sender, ScrollEventArgs e)
         {
             MusicPlayer.settings.volume = VolumeBar.Value;
+            lbl_volume.Text = VolumeBar.Value.ToString() + "%";
         }
+
+        //ANIMAÇÃO DA GANYUZINHA:
         private void InitializeAnimation()
         {
             animationTimer = new Timer();
             animationTimer.Interval = 500;
-            animationTimer.Tick += animationTimer_Tick;
-            animationTimer.Start();
+            animationTimer.Tick += animationTimer_Tick; 
         }
         private void animationTimer_Tick(object sender, EventArgs e)
         {
-            const int upperLimit = 10;
-            const int lowerLimit = 100;
+            const int upperLimit = 100;
+            const int lowerLimit = 50;
             siticonePictureBox1.Top += moveDistance * direction;
 
             if (siticonePictureBox1.Top <= upperLimit || siticonePictureBox1.Bottom >= lowerLimit)
