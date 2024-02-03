@@ -22,8 +22,30 @@ Dito isso, vale ressaltar que este é um projeto totalmente independente, e prod
 - Opção para carregar as músicas que deseja;
 - Tempo total e atual da música;
 
-# Tecnologias utilizadas
+# Turorial de Instalação
 
+## Primeiro, clique em "releases"
+
+![RELEASES](https://github.com/Hayasem/ASSETS/blob/main/tutorialParte1.png)
+
+## E em Seguida, desça a página até encontrar os "ASSETS"
+Após visualizá-los, clique em "MusicPlayerApplication.zip" e realize o download
+
+![ASSETS](https://github.com/Hayasem/ASSETS/blob/main/TutorialParte2.png)
+
+## Feito isso, extraia a pasta compactada, e, em seguida siga este caminho: 
+
+![EXTRAIR](https://github.com/Hayasem/ASSETS/blob/main/TutorialParte3.png)
+
+![PASTADESCOMPACTADA](https://github.com/Hayasem/ASSETS/blob/main/TutorialParte4.png)
+
+## "bin/debug" 
+
+![LOCALIZACAO.EXE](https://github.com/Hayasem/ASSETS/blob/main/TutorialParte5.png)
+
+e a aplicação estará lá, basta iniciá-la!
+
+# Tecnologias utilizadas
 ## back-end e front-end
 - C#
 
