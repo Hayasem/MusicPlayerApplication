@@ -107,6 +107,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="image-removebg-preview.ico" />
     <None Include="Resources\gabiru-removebg-preview.png" />
     <None Include="Resources\gabiru.jpg" />
